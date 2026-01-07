@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/menu_screen.dart';
 
 void main() {
   runApp(const ThaiOrderApp());
@@ -96,7 +97,11 @@ class WelcomeScreen extends StatelessWidget {
                 // Get Started Button
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Navigate to main screen
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const MenuScreen(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
