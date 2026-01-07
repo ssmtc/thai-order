@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'screens/menu_screen.dart';
-import 'theme/app_theme.dart';
 
 void main() {
   runApp(const ThaiOrderApp());
@@ -9,19 +9,30 @@ void main() {
 class ThaiOrderApp extends StatelessWidget {
   const ThaiOrderApp({super.key});
 
+  static const Color primaryColor = Color(0xFFF46A25);
+  static const Color backgroundDark = Color(0xFF221610);
+  static const Color surfaceDark = Color(0xFF2C241F);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Thai Order',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark, // Default to dark mode as per HTML template
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const WelcomeScreen(),
-        '/menu': (context) => const MenuScreen(),
-      },
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: primaryColor,
+          brightness: Brightness.dark,
+        ).copyWith(
+          surface: backgroundDark,
+          primary: primaryColor,
+        ),
+        scaffoldBackgroundColor: backgroundDark,
+        useMaterial3: true,
+        textTheme: GoogleFonts.plusJakartaSansTextTheme(
+          ThemeData.dark().textTheme,
+        ),
+      ),
+      home: const WelcomeScreen(),
     );
   }
 }
@@ -98,7 +109,11 @@ class WelcomeScreen extends StatelessWidget {
                 // Get Started Button
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/menu');
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const MenuScreen(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
