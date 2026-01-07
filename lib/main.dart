@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'screens/menu_screen.dart';
 
 void main() {
@@ -8,6 +9,10 @@ void main() {
 class ThaiOrderApp extends StatelessWidget {
   const ThaiOrderApp({super.key});
 
+  static const Color primaryColor = Color(0xFFF46A25);
+  static const Color backgroundDark = Color(0xFF221610);
+  static const Color surfaceDark = Color(0xFF2C241F);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,10 +20,17 @@ class ThaiOrderApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orange,
-          brightness: Brightness.light,
+          seedColor: primaryColor,
+          brightness: Brightness.dark,
+        ).copyWith(
+          surface: backgroundDark,
+          primary: primaryColor,
         ),
+        scaffoldBackgroundColor: backgroundDark,
         useMaterial3: true,
+        textTheme: GoogleFonts.plusJakartaSansTextTheme(
+          ThemeData.dark().textTheme,
+        ),
       ),
       home: const WelcomeScreen(),
     );

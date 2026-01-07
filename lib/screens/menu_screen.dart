@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dish_details_screen.dart';
 
 // Custom Colors matching the design
 class AppColors {
@@ -310,7 +311,15 @@ class _MenuScreenState extends State<MenuScreen> {
     String? badge,
     Color? badgeColor,
   }) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const DishDetailsScreen(),
+          ),
+        );
+      },
+      child: Container(
       width: 280,
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,
@@ -416,6 +425,7 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }
