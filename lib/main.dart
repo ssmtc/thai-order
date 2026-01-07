@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'screens/dish_details_screen.dart';
+import 'screens/menu_screen.dart';
 
 void main() {
   runApp(const ThaiOrderApp());
@@ -109,9 +109,9 @@ class WelcomeScreen extends StatelessWidget {
                 // Get Started Button
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => const DishDetailsScreen(),
+                        builder: (context) => const MenuScreen(),
                       ),
                     );
                   },
