@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'screens/menu_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   runApp(const ThaiOrderApp());
@@ -12,14 +14,14 @@ class ThaiOrderApp extends StatelessWidget {
     return MaterialApp(
       title: 'Thai Order',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orange,
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-      ),
-      home: const WelcomeScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark, // Default to dark mode as per HTML template
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WelcomeScreen(),
+        '/menu': (context) => const MenuScreen(),
+      },
     );
   }
 }
@@ -96,7 +98,7 @@ class WelcomeScreen extends StatelessWidget {
                 // Get Started Button
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Navigate to main screen
+                    Navigator.pushNamed(context, '/menu');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
